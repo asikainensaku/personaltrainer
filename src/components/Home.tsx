@@ -5,7 +5,7 @@ function Home() {
         <>
             <Typography>Personal Trainer</Typography>
         </>
-    );
+    )
 }
 
 export default Home;
