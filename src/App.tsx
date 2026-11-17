@@ -5,11 +5,9 @@ function App() {
   return (
 
     <Container maxWidth="lg">
-      <AppBar>
+      <AppBar position="static" sx={{ mb: 2 }}>
         <Toolbar>
-          <Typography>
-            Personal Trainer
-          </Typography>
+          <Typography variant="h6">Personal Trainer</Typography>
         </Toolbar>
       </AppBar>
 
