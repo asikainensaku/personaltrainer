@@ -9,10 +9,10 @@ function App() {
 
     <BrowserRouter>
       <CssBaseline />
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" disableGutters>
         <AppBar position="static" sx={{ mb: 2 }}>
           <Toolbar>
-            <Typography variant="h6" sx={{ flexGrow: 1 }}>Personal Trainer</Typography>
+            <Typography variant="h6" sx={{ flexGrow: 1, textAlign: "left" }}>Power PT</Typography>
 
             <Button color="inherit" component={Link} to="/">Home</Button>
 
