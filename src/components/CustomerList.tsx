@@ -17,6 +17,7 @@ function CustomerList() {
         { field: "city", headerName: "City", flex: 1 },
         { field: "email", headerName: "Email", flex: 1 },
         { field: "phone", headerName: "Phone", flex: 1 },
+
     ];
 
     const fetchCustomers = () => {
@@ -33,10 +34,11 @@ function CustomerList() {
         <>
             <Typography variant="h6">Customers</Typography>
 
-            <div>
+            <div style={{ width: "100%", height: 500, marginTop: 10 }}>
                 <DataGrid
                     rows={customers || []}
                     columns={columns}
+                    getRowId={row => row._links.self.href}
                 />
             </div>
         </>
