@@ -34,7 +34,7 @@ function CustomerList() {
         <>
             <Typography variant="h6">Customers</Typography>
 
-            <div style={{ width: "100%", height: 500, marginTop: 10 }}>
+            <div style={{ width: "100%", height: 900, marginTop: 10 }}>
                 <DataGrid
                     rows={customers || []}
                     columns={columns}

@@ -39,7 +39,7 @@ function TrainingList() {
         <>
             <Typography variant="h6">Trainings</Typography>
 
-            <div style={{ width: "100%", height: 500, marginTop: 10 }}>
+            <div style={{ width: "100%", height: 600, marginTop: 10 }}>
                 <DataGrid
                     rows={trainings}
                     columns={columns}
