@@ -16,7 +16,7 @@ function TrainingList() {
             field: "customer",
             headerName: "Customer",
             renderCell: (params) =>
-                '${params.row.customer.firstname} ${params.row.customer.lastname}'
+                `${params.row.customer.firstname} ${params.row.customer.lastname}`
         },
     ];
 
