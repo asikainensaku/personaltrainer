@@ -1,3 +1,5 @@
+import type { Customer } from "./types";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 export function getCustomers() {
@@ -16,6 +18,21 @@ export function getTrainings() {
         .then(response => {
             if (!response.ok) {
                 throw new Error("Error when fetching trainings");
+            }
+
+            return response.json();
+        });
+}
+
+export function addCustomer(customer: Customer) {
+    return fetch(API_URL + "/customers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(customer)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error when adding a new customer");
             }
 
             return response.json();
