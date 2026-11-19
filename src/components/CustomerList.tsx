@@ -38,7 +38,6 @@ function CustomerList() {
                 <AddCustomer fetchCustomers={fetchCustomers} />
             </div>
 
-
             <div style={{ width: "100%", height: 900, marginTop: 10 }}>
                 <DataGrid
                     rows={customers || []}
