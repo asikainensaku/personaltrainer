@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 import { getCustomers } from "../personalTrainerApi";
 import type { Customer } from "../types";
+import AddCustomer from "./AddCustomer";
 
 
 function CustomerList() {
@@ -32,7 +33,11 @@ function CustomerList() {
 
     return (
         <>
-            <Typography variant="h6">Customers</Typography>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <Typography variant="h6">Customers</Typography>
+                <AddCustomer fetchCustomers={fetchCustomers} />
+            </div>
+
 
             <div style={{ width: "100%", height: 900, marginTop: 10 }}>
                 <DataGrid
