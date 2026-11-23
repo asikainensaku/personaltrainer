@@ -4,7 +4,7 @@ import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 import { getCustomers } from "../personalTrainerApi";
 import type { Customer } from "../types";
 import AddCustomer from "./AddCustomer";
-
+import EditCustomer from "./EditCustomer";
 
 function CustomerList() {
     const [customers, setCustomers] = useState<Customer[] | null>();
@@ -18,6 +18,18 @@ function CustomerList() {
         { field: "city", headerName: "City", flex: 1 },
         { field: "email", headerName: "Email", flex: 1 },
         { field: "phone", headerName: "Phone", flex: 1 },
+
+        {
+            field: "edit",
+            headerName: "Edit",
+            sortable: false,
+            filterable: false,
+            renderCell: (params) => (
+                <EditCustomer
+                    customer={params.row}
+                    fetchCustomers={fetchCustomers} />
+            )
+        }
 
     ];
 
