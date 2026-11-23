@@ -38,3 +38,27 @@ export function addCustomer(customer: Customer) {
             return response.json();
         });
 }
+
+//Help for PUT request: https://jasonwatmore.com/post/2020/11/02/react-fetch-http-put-request-examples 
+
+export function updateCustomer(url: string, customer: Customer) {
+    return fetch(url, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            firstname: customer.firstname,
+            lastname: customer.lastname,
+            streetaddress: customer.streetaddress,
+            postcode: customer.postcode,
+            city: customer.city,
+            email: customer.email,
+            phone: customer.phone
+        })
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error when updating customer");
+            }
+            return response.json();
+        });
+}
