@@ -71,3 +71,22 @@ export function deleteCustomer(url: string) {
             }
         });
 }
+
+export function addTraining(training: {
+    date: string;
+    duration: number;
+    activity: string;
+    customer: string;
+}) {
+    return fetch(API_URL + "/trainings", {
+        method: "POST",
+        headers: { "Content-Type": "application / json" },
+        body: JSON.stringify(training)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error when adding a new training");
+            }
+            return response.json();
+        });
+}
