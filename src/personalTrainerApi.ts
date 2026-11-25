@@ -74,13 +74,13 @@ export function deleteCustomer(url: string) {
 
 export function addTraining(training: {
     date: string;
-    duration: number;
+    duration: string;
     activity: string;
     customer: string;
 }) {
     return fetch(API_URL + "/trainings", {
         method: "POST",
-        headers: { "Content-Type": "application / json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(training)
     })
         .then(response => {

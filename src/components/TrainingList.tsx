@@ -1,13 +1,16 @@
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import AddTraining from "./AddTraining";
 import type { Training } from "../types";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
-import { getTrainings } from "../personalTrainerApi";
+import { getTrainings, getCustomers } from "../personalTrainerApi";
+import type { Customer } from "../types";
 import dayjs from "dayjs";
 
 
 function TrainingList() {
     const [trainings, setTrainings] = useState<Training[]>([]);
+    const [customers, setCustomers] = useState<Customer[]>([]);
 
     const columns: GridColDef<Training>[] = [
         {
@@ -31,13 +34,26 @@ function TrainingList() {
             .catch(err => console.error(err));
     };
 
+    const fetchCustomers = () => {
+        getCustomers()
+            .then(data => setCustomers(data._embedded.customers))
+            .catch(err => console.error(err));
+    };
+
     useEffect(() => {
         fetchTrainings();
+        fetchCustomers();
     }, []);
 
     return (
         <>
-            <Typography variant="h6">Trainings</Typography>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <Typography variant="h6">Trainings</Typography>
+                <AddTraining
+                    customers={customers}
+                    fetchTrainings={fetchTrainings}
+                />
+            </div>
 
             <div style={{ width: "100%", height: 600, marginTop: 10 }}>
                 <DataGrid
