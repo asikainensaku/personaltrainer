@@ -90,3 +90,14 @@ export function addTraining(training: {
             return response.json();
         });
 }
+
+export function deleteTraining(id: number) {
+    return fetch(API_URL + "/trainings/" + id, {
+        method: "DELETE"
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error when deleting training");
+            }
+        });
+}
