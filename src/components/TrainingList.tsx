@@ -1,16 +1,18 @@
-import { Typography } from "@mui/material";
+import { IconButton, Snackbar, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import AddTraining from "./AddTraining";
 import type { Training } from "../types";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
-import { getTrainings, getCustomers } from "../personalTrainerApi";
+import { getTrainings, getCustomers, deleteTraining } from "../personalTrainerApi";
 import type { Customer } from "../types";
 import dayjs from "dayjs";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 
 function TrainingList() {
     const [trainings, setTrainings] = useState<Training[]>([]);
     const [customers, setCustomers] = useState<Customer[]>([]);
+    const [open, setOpen] = useState(false);
 
     const columns: GridColDef<Training>[] = [
         {
@@ -26,12 +28,34 @@ function TrainingList() {
             renderCell: (params) =>
                 `${params.row.customer.firstname} ${params.row.customer.lastname}`
         },
+        {
+            field: "delete",
+            headerName: "Delete",
+            sortable: false,
+            filterable: false,
+            renderCell: (params) => (
+                <IconButton onClick={() => handleDelete(params.row.id)}>
+                    <DeleteIcon color="error" />
+                </IconButton>
+            )
+        }
     ];
 
     const fetchTrainings = () => {
         getTrainings()
             .then(data => setTrainings(data))
             .catch(err => console.error(err));
+    };
+
+    const handleDelete = (id: number) => {
+        if (window.confirm("Are you sure you want to delete this training?")) {
+            deleteTraining(id)
+                .then(() => {
+                    fetchTrainings();
+                    setOpen(true);
+                })
+                .catch(err => console.error(err));
+        }
     };
 
     const fetchCustomers = () => {
@@ -62,6 +86,12 @@ function TrainingList() {
                     getRowId={row => row.id}
                 />
             </div>
+            <Snackbar
+                open={open}
+                message="Training deleted successfully"
+                autoHideDuration={3000}
+                onClose={() => setOpen(false)}
+            />
         </>
     );
 };
