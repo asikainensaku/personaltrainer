@@ -1,6 +1,6 @@
 import { AppBar, Button, Container, CssBaseline, Toolbar, Typography } from "@mui/material";
 import Home from "./components/Home";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { HashRouter, Link, Route, Routes } from "react-router-dom";
 import CustomerList from "./components/CustomerList";
 import TrainingList from "./components/TrainingList";
 import { LocalizationProvider } from "@mui/x-date-pickers";
@@ -13,7 +13,7 @@ function App() {
     // Source for using LocalizationProvider and Dayjs: https://mui.com/x/react-date-pickers/quickstart/
 
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <BrowserRouter>
+      <HashRouter>
         <CssBaseline />
         <Container maxWidth="lg" disableGutters>
           <AppBar position="static" sx={{ mb: 2 }}>
@@ -39,7 +39,7 @@ function App() {
           </Routes>
 
         </Container>
-      </BrowserRouter>
+      </HashRouter>
     </LocalizationProvider>
   );
 }
