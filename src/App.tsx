@@ -5,6 +5,7 @@ import CustomerList from "./components/CustomerList";
 import TrainingList from "./components/TrainingList";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import Calendar from "./components/Calendar";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
 
               <Button color="inherit" component={Link} to="/trainings">Trainings</Button>
 
+              <Button color="inherit" component={Link} to="/calendar">Calendar</Button>
+
             </Toolbar>
           </AppBar>
 
@@ -32,6 +35,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/customers" element={<CustomerList />} />
             <Route path="/trainings" element={<TrainingList />} />
+            <Route path="/calendar" element={<Calendar />} />
           </Routes>
 
         </Container>

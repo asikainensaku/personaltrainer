@@ -26,7 +26,9 @@ function TrainingList() {
             headerName: "Customer",
             flex: 1,
             renderCell: (params) =>
-                `${params.row.customer.firstname} ${params.row.customer.lastname}`
+                params.row.customer
+                    ? `${params.row.customer.firstname} ${params.row.customer.lastname}`
+                    : "Unknown customer"
         },
         {
             field: "delete",
